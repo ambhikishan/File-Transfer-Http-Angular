@@ -1,0 +1,42 @@
+<!-- <h3 class="folder-item" *ngFor="let f of foldersAndFiles" (click)="fetchFiles(f)" >{{f}}</h3> -->
+ <div class="explorer-container">
+  
+  <!-- HEADER SECTION -->
+  <header class="explorer-header">
+    <div class="header-title">
+      <h2>📁 File Explorer</h2>
+    </div>
+
+    <div class="header-actions">
+      <!-- Hidden File Input -->
+      <input 
+        type="file" 
+        #fileInput 
+        (change)="onFileSelected($event)" 
+        style="display: none;" 
+      />
+      
+      <!-- Stylish Upload Button -->
+      <button class="upload-btn" (click)="fileInput.click()" [disabled]="isUploading">
+        <span *ngIf="!isUploading">➕ Upload File</span>
+        <span *ngIf="isUploading">Uploading... {{ uploadProgress }}%</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- FILE LIST SECTION -->
+  <div class="file-list">
+    <!-- Your existing code -->
+    <h3 class="folder-item" *ngFor="let f of foldersAndFiles" (click)="fetchFiles(f)">
+      {{f}}
+    </h3>
+    
+    <!-- Empty state message if the folder has no files -->
+    <p class="empty-state" *ngIf="foldersAndFiles.length === 0">
+      This folder is empty.
+    </p>
+  </div>
+
+</div>
+
+

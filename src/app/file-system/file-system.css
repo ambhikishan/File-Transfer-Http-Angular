@@ -1,0 +1,107 @@
+.folder-item {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between the icon and the text */
+  cursor: pointer;
+  padding: 8px 12px;
+  margin: 4px 0;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+/* Hover effect since these are clickable */
+.folder-item:hover {
+  background-color: #f0f4f8; 
+}
+
+/* Adds the folder icon before the text */
+.folder-item::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  /* An inline Material Design folder SVG. Change %23FFC107 to change the color (it represents #FFC107) */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FFC107"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+
+.explorer-container {
+  max-width: 900px;
+  margin: 20px auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header Styles */
+.explorer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 8px 8px 0 0;
+}
+
+.header-title h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+/* Upload Button Styles */
+.upload-btn {
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.upload-btn:hover:not([disabled]) {
+  background-color: #0052a3;
+}
+
+.upload-btn:disabled {
+  background-color: #99c2ff;
+  cursor: wait;
+}
+
+/* File List Styles */
+.file-list {
+  background-color: white;
+  min-height: 300px;
+  border-radius: 0 0 8px 8px;
+}
+
+.folder-item {
+  margin: 0;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #444;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.folder-item:hover {
+  background-color: #f4f6f8;
+  color: #0066cc;
+}
+
+.empty-state {
+  padding: 24px;
+  text-align: center;
+  color: #888;
+  font-style: italic;
+}
