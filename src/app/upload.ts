@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UploadService {
-    private baseUrl = 'http://192.168.1.2:8080'; 
+    private baseUrl = `http://${window.location.hostname}:8080`; 
 
   constructor(private http: HttpClient) {}
 
@@ -21,8 +21,8 @@ export class UploadService {
     // are bypassing FormData for pure stream uploading.
     // encodeURIComponent ensures spaces and special characters don't break the headers.
     const headers = new HttpHeaders({
-      'File-Name': encodeURIComponent(file.name),
-      'Upload-Path': encodeURIComponent(currentPath),
+      'File-Name': file.name,
+      'Upload-Path': currentPath,
       'Content-Type': 'application/octet-stream'
     });
 

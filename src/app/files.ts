@@ -22,7 +22,7 @@ export class FilesDownload {
     const queryParams = new HttpParams()
   .set('path', path);
   
-    return this.http.get(`http://${window.location.hostname}:8080`,{params:queryParams});
+    return this.http.get(`http://${window.location.hostname}:8080`,{params:queryParams, observe: 'response' });
   }
 }
 

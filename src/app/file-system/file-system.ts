@@ -81,20 +81,31 @@ ngOnInit(): void {
   })
 }
 
-fetchFiles(event:any)
+ fetchFiles(event:any)
 {
   this.dataService.fetchFiles(event).subscribe(data =>{
-    console.log("api called")
+    
+    console.log(data.headers.get("content-type"))
+    if(data.headers.get("content-type")=="application/json")
+    {
     this.foldersAndFiles.length = 0;
-     for(let d of data)
+     for(let d of data.body)
     {
       this.foldersAndFiles.push(d.replace(/\\/g, "/"));
     }
     this.currentPath = event.replace(/\\/g, "/");
     this.cdr.detectChanges();
-  },
+  }
+  else
+  { 
+    const a = document.createElement("a");
+  a.href = `http://${window.location.hostname}:8080?path=`+event;
+  a.click();
+  
+  }
+},
 error=>{
- const a = document.createElement("a")
+ const a = document.createElement("a");
   a.href = `http://${window.location.hostname}:8080?path=`+event;
   a.click();
   
